@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+/*
+  ==========================================
+  Coastal Early-Warning Theme
+  ==========================================
+  - v1.0.0
+  - Senior Frontend Engineer Refactor
+  - NOTE: All color values are fixed as per the project spec.
+*/
+
+:root {
+  /* --- Coastal / Blue Carbon Palette — FIXED HEX VALUES --- */
+  --bg: #031927; /* deep coastal navy (page background) */
+  --sea-deep: #013a63; /* deep sea blue (accent) */
+  --sea: #0277bd; /* ocean blue (secondary) */
+  --mangrove: #2fa46e; /* mangrove / seagrass green (primary success) */
+  --sand: #e7cba9; /* sandy accent (soft warm) */
+  --sun-accent: #ffb84d; /* urgent/CTA accent (warm amber) */
+  --storm: #5a6570; /* storm/neutral grey */
+  --card: #062b33; /* card surface (dark teal) */
+  --card-translucent: rgba(
+    6,
+    43,
+    51,
+    0.6
+  ); /* translucent card for glass effect */
+  --fg: #e6f1ff; /* main text (off-white) */
+  --muted: #9fb3bf; /* subdued text */
+  --danger: #ef4444; /* alert red (for danger states) */
+  --border: #13333b; /* subtle border */
+}
+
+/*
+  ==========================================
+  Base & Accessibility Styles
+  ==========================================
+*/
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global focus state for better accessibility */
+*:focus-visible {
+  outline: 2px solid var(--sea);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/*
+  ==========================================
+  Gradient & Hero Utilities
+  ==========================================
+*/
+/* A subtle background gradient for sections or pages */
+.bg-gradient-main {
+  background-image: linear-gradient(135deg, var(--sea), var(--bg));
+}
+
+/* For primary headlines, clipped to text */
+.text-gradient-primary {
+  background-image: linear-gradient(95deg, var(--mangrove), var(--sun-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Soft atmospheric glows for hero sections */
+.bg-radial-hero {
+  /* NOTE: chosen alpha values for subtle effect — safe to change */
+  background: radial-gradient(
+      600px circle at 20% 10%,
+      rgba(47, 164, 110, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      800px circle at 80% 0%,
+      rgba(2, 119, 189, 0.12),
+      transparent 45%
+    );
+}
+
+/*
+  ==========================================
+  Animation & Effects
+  ==========================================
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes backgroundShine {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Utility class to apply fade-in animation */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Animated shine effect for important text like CTAs */
+.shine-effect {
+  background: linear-gradient(
+    110deg,
+    var(--mangrove) 0%,
+    var(--sun-accent) 50%,
+    var(--mangrove) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: backgroundShine 3s linear infinite;
+}
+
+/* Glassmorphism effect for cards over dynamic backgrounds */
+.glassmorphism {
+  background: var(--card-translucent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+}
+
+/* 3D tilt effect on hover for interactive cards */
+.tilt-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(4deg) rotateY(-4deg)
+    scale3d(1.03, 1.03, 1.03);
+  /* NOTE: chosen shadow values for depth effect — safe to change */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/*
+  ==========================================
+  Component-like Utilities
+  ==========================================
+*/
+
+/* General purpose section container with responsive padding */
+.section {
+  padding-block: 4rem;
+}
+@media (max-width: 640px) {
+  .section {
+    padding-block: 3rem;
+  }
+}
+
+/* Standard card surface style */
+.card-surface {
+  background: var(--card);
+  border: 1px solid var(--border);
+  /* NOTE: chosen shadow values for depth effect — safe to change */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+/* Primary call-to-action button */
+.btn-primary {
+  background: linear-gradient(95deg, var(--mangrove), var(--sea));
+  color: #041018; /* NOTE: chosen dark color for high contrast */
+  border: 1px solid color-mix(in oklab, var(--mangrove) 60%, var(--border));
+  transition: filter 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(47, 164, 110, 0.2);
+}
+
+/* Danger button for alerts and critical actions */
+.btn-danger {
+  background: var(--danger);
+  color: var(--fg);
+  border: 1px solid color-mix(in oklab, var(--danger) 80%, black);
+  transition: filter 0.2s ease, transform 0.2s ease;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+}
+.btn-danger:hover {
+  filter: brightness(1.1);
+}
+
+/* Alert message styles */
+.alert-danger {
+  background-color: color-mix(in oklab, var(--danger) 30%, var(--bg));
+  color: var(--fg);
+  border: 1px solid var(--danger);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Small badge for urgent items */
+.badge-urgent {
+  background-color: var(--sun-accent);
+  color: #1a1001; /* NOTE: chosen dark color for high contrast */
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Muted text utility */
+.muted {
+  color: var(--muted);
+}

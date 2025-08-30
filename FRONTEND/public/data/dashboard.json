@@ -1,0 +1,102 @@
+[
+  {
+    "message": "Pipeline completed successfully",
+    "success": true,
+    "riskEvent": {
+      "sourceComputationId": "68b360a116fb69494c11ad2a",
+      "parcelId": "68b35904402117e0724165f2",
+      "location": "Sundarbans_Buffer_Zone",
+      "riskScore": 85,
+      "band": "Red",
+      "why": "Impending cyclonic storm coinciding with high spring tide.",
+      "timeWindowHrs": 24,
+      "audience": ["people", "officials", "disaster_response"],
+      "messages": {
+        "smsShort": "SEVERE ALERT: Cyclone approaching Sundarbans. High tide will increase flood risk. Evacuate low-lying areas within 24 hours.",
+        "dashboard": "Risk Score: 85/100 (Red). Cyclone 'Sagar' is expected to make landfall near the Sundarbans. High spring tide will amplify storm surge. Evacuation protocols should be initiated for vulnerable zones."
+      },
+      "generatedAt": "2025-08-31T01:45:12.841Z",
+      "_id": "68b36d39d3dc4c785ba91755",
+      "__v": 0
+    },
+    "summary": {
+      "modulesCompleted": 4,
+      "errors": []
+    }
+  },
+  {
+    "message": "Pipeline completed successfully",
+    "success": true,
+    "riskEvent": {
+      "sourceComputationId": "68b360a116fb69494c11ad2b",
+      "parcelId": "68b35904402117e0724166a3",
+      "location": "Puri_Coastline",
+      "riskScore": 58,
+      "band": "Yellow",
+      "why": "Strong offshore winds and continuous moderate rainfall increasing erosion risk.",
+      "timeWindowHrs": 48,
+      "audience": ["fisherfolk", "tourism_operators", "officials"],
+      "messages": {
+        "smsShort": "MODERATE ALERT: Rough seas and erosion risk at Puri Coast for next 48 hrs. Fishermen advised not to venture into the sea.",
+        "dashboard": "Risk Score: 58/100 (Yellow). Persistent strong winds and rainfall are causing rough sea conditions. Increased risk of beach erosion. Coastal tourism activities should be limited."
+      },
+      "generatedAt": "2025-08-30T22:10:05.311Z",
+      "_id": "68b36d39d3dc4c785ba91768",
+      "__v": 0
+    },
+    "summary": {
+      "modulesCompleted": 4,
+      "errors": []
+    }
+  },
+  {
+    "message": "Pipeline completed successfully",
+    "success": true,
+    "riskEvent": {
+      "sourceComputationId": "68b360a116fb69494c11ad2c",
+      "parcelId": "68b35904402117e0724167b9",
+      "location": "Gahirmatha_Sanctuary",
+      "riskScore": 12,
+      "band": "Green",
+      "why": "All parameters normal. Routine periodic assessment.",
+      "timeWindowHrs": 72,
+      "audience": ["officials", "researchers"],
+      "messages": {
+        "smsShort": "INFO: Conditions at Gahirmatha Sanctuary are stable. All environmental parameters are within normal range.",
+        "dashboard": "Risk Score: 12/100 (Green). Routine system check confirms stable conditions. No immediate threats detected. Water quality and mangrove health are normal."
+      },
+      "generatedAt": "2025-08-30T18:00:00.000Z",
+      "_id": "68b36d39d3dc4c785ba91781",
+      "__v": 0
+    },
+    "summary": {
+      "modulesCompleted": 4,
+      "errors": []
+    }
+  },
+  {
+    "message": "Pipeline completed successfully",
+    "success": true,
+    "riskEvent": {
+      "sourceComputationId": "68b360a116fb69494c11ad2d",
+      "parcelId": "68b35904402117e0724168c4",
+      "location": "Mumbai_Metropolitan_Coast",
+      "riskScore": 72,
+      "band": "Red",
+      "why": "Industrial effluent spill detected upstream, potential for coastal contamination with incoming tide.",
+      "timeWindowHrs": 6,
+      "audience": ["officials", "health_dept", "people"],
+      "messages": {
+        "smsShort": "HEALTH ADVISORY: Chemical spill alert for Mumbai Coast. Avoid contact with sea water for the next 6 hours. Details to follow.",
+        "dashboard": "Risk Score: 72/100 (Red). An industrial effluent spill has been detected. The incoming tide is projected to bring contaminants to the coastline. A public health advisory is in effect."
+      },
+      "generatedAt": "2025-08-31T01:15:30.159Z",
+      "_id": "68b36d39d3dc4c785ba91792",
+      "__v": 0
+    },
+    "summary": {
+      "modulesCompleted": 4,
+      "errors": []
+    }
+  }
+]

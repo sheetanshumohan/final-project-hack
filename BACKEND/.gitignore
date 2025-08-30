@@ -1,0 +1,39 @@
+# Backend specific ignores
+
+# Environment variables (CRITICAL - contains API keys)
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory
+coverage/
+
+# Database files (if using local DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# Upload directories (may contain large images)
+uploads/
+src/uploads/*.jpg
+src/uploads/*.jpeg
+src/uploads/*.png
+
+# Temporary files
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
