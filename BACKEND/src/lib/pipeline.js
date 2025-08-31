@@ -4,6 +4,7 @@ const Output = require('../models/Output');
 const RiskEvent = require('../models/RiskEvent');
 const { processMangroveTracking } = require('./module1');
 const { computeRisk, maybeLLMEnhanceMessages, clamp } = require('./module4');
+const { generateAlertsForRisk } = require('./alertGenerator');
 
 /**
  * Run all modules sequentially for a given input parcel
@@ -183,6 +184,24 @@ async function runCompletePipeline(identifier, options = {}) {
       // Save to RiskEvent collection
       const riskEvent = new RiskEvent(riskEventData);
       const savedEvent = await riskEvent.save();
+      
+      // Generate user alerts if risk is Yellow/Red
+      try {
+        if (band === 'Yellow' || band === 'Red') {
+          const alerts = await generateAlertsForRisk({
+            parcelId: input._id.toString(),
+            location: input.villageName || input.parcelName,
+            riskScore,
+            band,
+            why,
+            timeWindowHrs
+          });
+          console.log(`📢 Generated ${alerts.length} user alerts for ${band} risk`);
+        }
+      } catch (alertError) {
+        console.warn('⚠️ Alert generation failed:', alertError.message);
+        // Don't fail the pipeline if alerts fail
+      }
       
       results.modules.module4 = {
         success: true,

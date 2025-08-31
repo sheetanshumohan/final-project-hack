@@ -48,13 +48,13 @@ const ParticleBackground = () => {
       },
       particles: {
         color: {
-          value: "#66ffd4",
+          value: ["#3b82f6", "#2563eb", "#1e3a8a"],
         },
         links: {
-          color: "#66ffd4",
+          color: "#3b82f6",
           distance: 150,
           enable: true,
-          opacity: 0.5,
+          opacity: 0.3,
           width: 1,
         },
         move: {
@@ -71,10 +71,16 @@ const ParticleBackground = () => {
           density: {
             enable: true,
           },
-          value: 100,
+          value: 80,
         },
         opacity: {
-          value: 0.5,
+          value: 0.6,
+          animation: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
         },
         shape: {
           type: "circle",

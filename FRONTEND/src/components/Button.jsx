@@ -8,6 +8,9 @@ const Button = ({ children, variant = "primary", ...props }) => {
 
     secondary:
       "bg-transparent text-[var(--sea)] ring-1 ring-inset ring-[var(--sea)] hover:bg-[var(--sea)] hover:text-[var(--bg)]",
+      
+    outline:
+      "bg-transparent text-[var(--sea)] ring-1 ring-inset ring-[var(--sea)] hover:bg-[var(--sea)] hover:text-[var(--bg)]",
   };
 
   return (

@@ -11,12 +11,13 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form onSubmit={handleSubmit} className="w-full group">
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        {/* Location icon */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
           <svg
-            className="h-5 w-5 text-[var(--muted)]"
-            xmlns="http://www.w.org/2000/svg"
+            className="h-5 w-5 text-[var(--muted)] group-focus-within:text-[var(--sea)] transition-colors duration-200"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -27,36 +28,41 @@ const SearchBar = ({ onSearch }) => {
             />
           </svg>
         </div>
+        
         <input
           type="search"
           name="search"
           id="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          // NOTE: Updated focus ring to use --sea, matching the global focus style in index.css for consistency.
-          className="block w-full rounded-md border-0  bg-[var(--card)] py-2.5 pl-10 text-[var(--fg)] ring-1 ring-inset ring-[var(--border)] placeholder:text-[var(--muted)]  sm:text-sm"
-          placeholder="Search location (e.g., Digha)"
+          className="block w-full rounded-xl border-0 bg-[var(--card)] py-3.5 pl-12 pr-16 text-[var(--fg)] ring-1 ring-inset ring-[var(--border)] placeholder:text-[var(--muted)] focus:ring-2 focus:ring-[var(--sea)] focus:ring-offset-0 focus:border-0 transition-all duration-200 sm:text-sm shadow-lg hover:shadow-xl"
+          placeholder="Search coastal location (e.g., Sundarban_Delta)"
           aria-label="Search by location"
         />
+        
+        {/* Search button */}
         <button
           type="submit"
-          className="absolute inset-y-0 right-0 flex items-center pr-3 group"
+          className="absolute inset-y-0 right-0 flex items-center pr-4 group/btn"
         >
-          {/* NOTE: Inline SVG for search icon */}
-          <svg
-            // NOTE: Updated hover color to use --sea for consistency with the focus ring.
-            className="h-5 w-5 text-[var(--muted)] group-hover:text-[var(--sea)] transition-colors"
-            xmlns="http://www.w.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-              clipRule="evenodd"
-            />
-          </svg>
+          <div className="bg-[var(--sea)] hover:bg-[var(--mangrove)] text-white p-2 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg">
+            <svg
+              className="h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
         </button>
+        
+        {/* Subtle glow effect on focus */}
+        <div className="absolute inset-0 rounded-xl ring-1 ring-[var(--sea)]/20 opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 pointer-events-none" />
       </div>
     </form>
   );

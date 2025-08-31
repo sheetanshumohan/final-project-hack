@@ -4,7 +4,7 @@ const riskEventSchema = new mongoose.Schema({
   sourceComputationId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Output',
-    required: true
+    required: false // Optional for user alerts
   },
   parcelId: {
     type: String,
@@ -50,6 +50,16 @@ const riskEventSchema = new mongoose.Schema({
   generatedAt: {
     type: Date,
     default: () => new Date()
+  },
+  // Optional fields for user-specific alerts
+  userId: {
+    type: String,
+    required: false // Only present for user alerts, not original risk events
+  },
+  userLanguage: {
+    type: String,
+    enum: ['en', 'hi', 'gu'],
+    required: false
   }
 }, {
   timestamps: false // We use generatedAt instead
@@ -57,5 +67,6 @@ const riskEventSchema = new mongoose.Schema({
 
 // Index for faster queries
 riskEventSchema.index({ parcelId: 1, generatedAt: -1 });
+riskEventSchema.index({ userId: 1, generatedAt: -1 }); // For user alert inbox
 
 module.exports = mongoose.model('RiskEvent', riskEventSchema);

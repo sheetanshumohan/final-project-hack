@@ -51,6 +51,14 @@ app.use('/api/m4', m4Routes);
 const pipelineRoutes = require('./routes/pipeline');
 app.use('/api/pipeline', pipelineRoutes);
 
+// Module 5 - Auth routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
+
+// Module 5 - Alerts routes
+const alertsRoutes = require('./routes/alerts');
+app.use('/api/alerts', alertsRoutes);
+
 // Start server
 const PORT = config.PORT;
 app.listen(PORT, () => {
